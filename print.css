@@ -1,0 +1,75 @@
+@media print {
+    @page {
+        size: A4;
+        margin: 1.5cm;
+    }
+
+    body {
+        background-color: #fff;
+        color: #000;
+        font-size: 11pt;
+    }
+
+    .container {
+        box-shadow: none;
+        margin: 0;
+        padding: 0;
+        max-width: 100%;
+        border-radius: 0;
+    }
+
+    h1, h2, h3, h2 i, a {
+        color: #000 !important;
+    }
+    
+    h1 {
+        border-color: #000;
+    }
+
+    .contact-info {
+        background-color: #eee !important;
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+    }
+
+    .contact-info a {
+        text-decoration: none;
+    }
+
+    a[href^="http"]:after {
+        content: " (" attr(href) ")";
+        font-size: 9pt;
+        color: #555;
+    }
+    a[href^="mailto"]:after, a[href^="tel"]:after {
+        content: "";
+    }
+
+    .main-columns {
+        display: block; /* Stack columns for printing */
+    }
+
+    .column-left, .column-right {
+        width: 100%;
+        flex: none;
+    }
+
+    section, .job, .education-item, .cert-item {
+        page-break-inside: avoid;
+    }
+
+    .cert-item {
+        background-color: #f0f0f0 !important;
+        border-color: #000;
+    }
+
+    footer {
+        display: none;
+    }
+    
+    /* Asegura que los colores de fondo y propiedades se impriman correctamente */
+    body {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+}
