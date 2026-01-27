@@ -1,75 +1,103 @@
 @media print {
     @page {
         size: A4;
-        margin: 1.5cm;
+        margin: 1cm;
     }
 
     body {
         background-color: #fff;
-        color: #000;
-        font-size: 11pt;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
     }
 
     .container {
-        box-shadow: none;
+        width: 100%;
+        max-width: 100%;
         margin: 0;
         padding: 0;
-        max-width: 100%;
-        border-radius: 0;
+        box-shadow: none;
     }
 
-    h1, h2, h3, h2 i, a {
-        color: #000 !important;
+    /* Hide UI elements */
+    .print-button {
+        display: none !important;
     }
-    
-    h1 {
-        border-color: #000;
+
+    /* Adjust Header */
+    .main-header {
+        margin-bottom: 1cm;
     }
 
     .contact-info {
-        background-color: #eee !important;
-        padding: 0.5rem;
-        border: 1px solid #ccc;
+        background-color: #ecf0f1 !important;
+        /* Keep the light grey */
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        border: none;
+        padding: 10px;
     }
 
-    .contact-info a {
-        text-decoration: none;
-    }
-
-    a[href^="http"]:after {
-        content: " (" attr(href) ")";
-        font-size: 9pt;
-        color: #555;
-    }
-    a[href^="mailto"]:after, a[href^="tel"]:after {
-        content: "";
-    }
-
+    /* Layout - Two Columns */
     .main-columns {
-        display: block; /* Stack columns for printing */
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 1cm;
     }
 
-    .column-left, .column-right {
-        width: 100%;
-        flex: none;
+    .column-left {
+        flex: 2;
     }
 
-    section, .job, .education-item, .cert-item {
+    .column-right {
+        flex: 1;
+    }
+
+    /* Clean up links - Remove URL expansion */
+    a {
+        text-decoration: none !important;
+    }
+
+    a[href]:after {
+        content: none !important;
+    }
+
+    /* Avoid breaking elements */
+    section,
+    article,
+    .job,
+    .education-item {
+        break-inside: avoid;
         page-break-inside: avoid;
     }
 
-    .cert-item {
-        background-color: #f0f0f0 !important;
-        border-color: #000;
+    h2 {
+        break-after: avoid;
+        page-break-after: avoid;
+    }
+
+    ul {
+        break-inside: avoid;
+    }
+
+    /* Certifications */
+    .cert-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    /* Font sizing tweaks for A4 to ensure fit */
+    html {
+        font-size: 14px;
+        /* Slightly reduce base font size for print */
+    }
+
+    p,
+    li {
+        line-height: 1.4;
     }
 
     footer {
         display: none;
-    }
-    
-    /* Asegura que los colores de fondo y propiedades se impriman correctamente */
-    body {
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
     }
 }

@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+:root {
+    --primary-blue: #5b9bd5;
+    /* The specific blue from the reference image */
+    --text-black: #000000;
+    --text-dark: #333333;
+    --font-stack: 'Arial', 'Helvetica', sans-serif;
+    /* Clean sans-serif */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-stack);
+    background-color: #f5f5f5;
+    /* Light grey background for web view */
+    color: var(--text-black);
+    line-height: 1.5;
+    font-size: 11pt;
+    /* Standard readable size */
+}
+
+/* Page Container simulating A4 paper */
+main,
+header {
+    background-color: white;
+    max-width: 21cm;
+    /* A4 width */
+    margin: 0 auto;
+    padding: 0 1.5cm;
+    /* Margins */
+}
+
+header {
+    padding-top: 1.5cm;
+    padding-bottom: 20px;
+}
+
+main {
+    padding-bottom: 2cm;
+}
+
+/* Header Section */
+header h1 {
+    text-align: center;
+    font-size: 18pt;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--text-black);
+}
+
+.header-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.summary {
+    flex: 3;
+    font-size: 10pt;
+    text-align: justify;
+}
+
+.contact {
+    flex: 2;
+    font-size: 10pt;
+}
+
+.contact p {
+    margin-bottom: 2px;
+}
+
+.contact strong {
+    font-weight: normal;
+    /* The image doesn't emphasize labels much */
+}
+
+.contact a {
+    color: var(--text-black);
+    text-decoration: none;
+}
+
+/* Sections */
+section {
+    margin-top: 20px;
+}
+
+h2 {
+    color: var(--primary-blue);
+    font-size: 11pt;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.divider {
+    height: 1px;
+    background-color: #a0a0a0;
+    /* Thin grey line */
+    margin-bottom: 15px;
+}
+
+/* Job Items */
+.job-item {
+    margin-bottom: 15px;
+}
+
+.job-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.job-title {
+    font-weight: 700;
+    font-size: 11pt;
+}
+
+.job-date {
+    font-weight: 700;
+    font-size: 11pt;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.job-item p {
+    margin-bottom: 5px;
+    font-size: 10.5pt;
+}
+
+.job-item ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+
+.job-item li {
+    margin-bottom: 2px;
+    font-size: 10.5pt;
+}
+
+/* Skills Grid (Optional customization) */
+.skills-content p {
+    margin-bottom: 5px;
+}
+
+.cert-list {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+/* Floating Print Button */
+.print-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+    font-size: 24px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.print-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background-color: white;
+    }
+
+    header,
+    main {
+        max-width: 100%;
+        margin: 0;
+        padding: 0 !important;
+        /* Let @page handle margins */
+    }
+
+    @page {
+        margin: 1.5cm;
+        size: A4;
+    }
+
+    .print-btn {
+        display: none;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+}
