@@ -35,8 +35,8 @@
         </header>
 
         <main>
-            <button onclick="window.print()" class="print-button" title="Print/Save as PDF">
-                <i class="fas fa-file-pdf"></i> Print / Save as PDF
+            <button onclick="downloadPDF()" class="print-button" title="Download PDF">
+                <i class="fas fa-file-pdf"></i> Download PDF
             </button>
             <section id="summary">
                 <h2><i class="fas fa-user-tie"></i> Professional Summary</h2>
@@ -196,6 +196,27 @@
         <footer>
         </footer>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        function downloadPDF() {
+            const element = document.querySelector('.container');
+            const button = document.querySelector('.print-button');
+            if (button) button.style.display = 'none';
+
+            const opt = {
+                margin: [0.2, 0.2, 0.2, 0.2],
+                filename: 'CV_Luis_Fernando_Rodriguez.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, useCORS: true, logging: false },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+                pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+            };
+
+            html2pdf().set(opt).from(element).save().then(() => {
+                if (button) button.style.display = 'flex';
+            });
+        }
+    </script>
 </body>
 
 </html>

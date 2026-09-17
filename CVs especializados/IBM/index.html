@@ -42,6 +42,18 @@
 
             <article class="job-item">
                 <div class="job-header">
+                    <span class="job-title">Instituto Tecnológico de Ocotlán (SII Project) – DBA Team Lead & SWAT Developer</span>
+                    <span class="job-date">Jan 2026 - Jun 2026</span>
+                </div>
+                <ul>
+                    <li>Designed, orchestrated, and programmed a complete database for the system using PostgreSQL, SQLAlchemy, and Alembic.</li>
+                    <li>Acted as a SWAT developer resolving blockers across Backend (FastAPI), Frontend (Next.js), and DevOps (Coolify).</li>
+                    <li>Recognized as one of the top committers and key problem-solvers, ensuring smooth team progress.</li>
+                </ul>
+            </article>
+
+            <article class="job-item">
+                <div class="job-header">
                     <span class="job-title">Ocotlán Chess Academy – Full-Stack Developer</span>
                     <span class="job-date">Present</span>
                 </div>
@@ -136,11 +148,11 @@
             <h2>TECHNICAL SKILLS</h2>
             <div class="divider"></div>
             <div class="skills-content">
-                <p><strong>Languages:</strong> Python, Java, Php.</p>
+                <p><strong>Languages:</strong> Python, Java, C++, JavaScript, TypeScript.</p>
                 <p><strong>Frameworks:</strong> Flask, React, Angular, Node.js, Express.js, FastAPI.</p>
-                <p><strong>Databases:</strong> MySQL, PostgreSQL, Oracle, SQLite, SQL Server, MongoDB, Firebase.</p>
-                <p><strong>Cloud & Tools:</strong> AWS, Oracle Cloud, IBM, Git, Docker, Linux (Ubuntu, Kali).</p>
-                <p><strong>Other:</strong> Software Architecture (Scalability/HA), Arduino, ESP32, Data Structures.</p>
+                <p><strong>Databases:</strong> Relational (MySQL, PostgreSQL, Oracle, SQLite, SQL Server), Non-Relational (MongoDB, Firebase).</p>
+                <p><strong>Cloud & Tools:</strong> AWS, Oracle Cloud, IBM, Git, Docker, Cursor, VS Code, PyCharm, NetBeans, Android Studio, Linux (Ubuntu, Kali), Windows.</p>
+                <p><strong>Other:</strong> Software Architecture (Scalability, Elasticity, HA), Arduino, ESP32, Data Structures, Automata.</p>
             </div>
         </section>
 
@@ -148,17 +160,42 @@
             <h2>CERTIFICATIONS & COURSES</h2>
             <div class="divider"></div>
             <ul class="cert-list">
-                <li>AWS Machine Learning & AI Fundamentals (Sep 2025)</li>
-                <li>AWS Cloud Practitioner Essentials (Sep 2025)</li>
-                <li>Python Zero to Expert (Dec 2024)</li>
-                <li>Official Scrum Fundamentals (Mar 2025)</li>
-                <li>IBM AI Educathon (Nov 2025)</li>
+                <li>AWS: Machine Learning & AI Fundamentals (Sep 2025)</li>
+                <li>AWS: Cloud Practitioner Essentials (Sep 2025)</li>
+                <li>Python: Zero to Expert - 86.5h (Dec 2024)</li>
+                <li>Scrum: Official Scrum Fundamentals (Mar 2025)</li>
+                <li>TecNM MOOC: Wireless Network Fundamentals</li>
+                <li>TecNM MOOC: Cloud Management & Communication Tools</li>
+                <li>Workshop: Lego Scrum (Apr 2025)</li>
+                <li>IBM: AI Educathon | University Day (Nov 2025)</li>
             </ul>
         </section>
     </main>
 
-    <button onclick="window.print()" class="print-btn" title="Print to PDF"><i class="fas fa-print"></i></button>
+    <button onclick="downloadPDF()" class="print-btn" title="Download PDF"><i class="fas fa-file-pdf"></i></button>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        function downloadPDF() {
+            const button = document.querySelector('.print-btn');
+            if (button) button.style.display = 'none';
+
+            const element = document.body;
+
+            const opt = {
+                margin: [0.2, 0.2, 0.2, 0.2],
+                filename: 'CV_Luis_Fernando_Rodriguez_IBM.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, useCORS: true, logging: false },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+                pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+            };
+
+            html2pdf().set(opt).from(element).save().then(() => {
+                if (button) button.style.display = 'flex';
+            });
+        }
+    </script>
 </body>
 
 </html>
