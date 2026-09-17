@@ -203,8 +203,10 @@
             const button = document.querySelector('.print-button');
             if (button) button.style.display = 'none';
 
+            document.body.classList.add('pdf-export');
+
             const opt = {
-                margin: [0.2, 0.2, 0.2, 0.2],
+                margin: [0.15, 0.15, 0.15, 0.15],
                 filename: 'CV_Luis_Fernando_Rodriguez.pdf',
                 image: { type: 'jpeg', quality: 0.98 },
                 html2canvas: { scale: 2, useCORS: true, logging: false },
@@ -213,6 +215,7 @@
             };
 
             html2pdf().set(opt).from(element).save().then(() => {
+                document.body.classList.remove('pdf-export');
                 if (button) button.style.display = 'flex';
             });
         }

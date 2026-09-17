@@ -10,8 +10,8 @@
 </head>
 
 <body>
-
-    <header>
+    <div id="cv-content">
+        <header>
         <h1>Luis Fernando Rodríguez Aleriano</h1>
         <div class="header-grid">
             <div class="summary">
@@ -171,6 +171,7 @@
             </ul>
         </section>
     </main>
+    </div>
 
     <button onclick="downloadPDF()" class="print-btn" title="Download PDF"><i class="fas fa-file-pdf"></i></button>
 
@@ -180,10 +181,12 @@
             const button = document.querySelector('.print-btn');
             if (button) button.style.display = 'none';
 
-            const element = document.body;
+            document.body.classList.add('pdf-export');
+
+            const element = document.getElementById('cv-content');
 
             const opt = {
-                margin: [0.2, 0.2, 0.2, 0.2],
+                margin: [0.15, 0.15, 0.15, 0.15],
                 filename: 'CV_Luis_Fernando_Rodriguez_IBM.pdf',
                 image: { type: 'jpeg', quality: 0.98 },
                 html2canvas: { scale: 2, useCORS: true, logging: false },
@@ -192,6 +195,7 @@
             };
 
             html2pdf().set(opt).from(element).save().then(() => {
+                document.body.classList.remove('pdf-export');
                 if (button) button.style.display = 'flex';
             });
         }
