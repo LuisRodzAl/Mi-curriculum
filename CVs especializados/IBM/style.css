@@ -2,11 +2,9 @@
 
 :root {
     --primary-blue: #5b9bd5;
-    /* The specific blue from the reference image */
     --text-black: #000000;
     --text-dark: #333333;
     --font-stack: 'Arial', 'Helvetica', sans-serif;
-    /* Clean sans-serif */
 }
 
 * {
@@ -19,8 +17,8 @@ body {
     font-family: var(--font-stack);
     background-color: #f5f5f5;
     color: var(--text-black);
-    line-height: 1.35;
-    font-size: 9.5pt;
+    line-height: 1.4;
+    font-size: 10pt;
 }
 
 /* Page Container simulating A4 paper */
@@ -29,24 +27,24 @@ header {
     background-color: white;
     max-width: 21cm;
     margin: 0 auto;
-    padding: 0 1cm;
+    padding: 0 1.2cm;
 }
 
 header {
-    padding-top: 0.8cm;
-    padding-bottom: 10px;
+    padding-top: 1cm;
+    padding-bottom: 12px;
 }
 
 main {
-    padding-bottom: 0.8cm;
+    padding-bottom: 1cm;
 }
 
 /* Header Section */
 header h1 {
     text-align: center;
-    font-size: 16pt;
+    font-size: 18pt;
     font-weight: 700;
-    margin-bottom: 0.8rem;
+    margin-bottom: 1rem;
     color: var(--text-black);
 }
 
@@ -58,13 +56,13 @@ header h1 {
 
 .summary {
     flex: 3;
-    font-size: 9pt;
+    font-size: 9.5pt;
     text-align: justify;
 }
 
 .contact {
     flex: 2;
-    font-size: 9pt;
+    font-size: 9.5pt;
 }
 
 .contact p {
@@ -82,49 +80,49 @@ header h1 {
 
 /* Sections */
 section {
-    margin-top: 10px;
+    margin-top: 14px;
 }
 
 h2 {
     color: var(--primary-blue);
-    font-size: 10.5pt;
+    font-size: 11pt;
     text-transform: uppercase;
     font-weight: 700;
-    margin-bottom: 2px;
+    margin-bottom: 3px;
 }
 
 .divider {
     height: 1px;
     background-color: #a0a0a0;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 /* Job Items */
 .job-item {
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .job-header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 2px;
+    margin-bottom: 3px;
 }
 
 .job-title {
     font-weight: 700;
-    font-size: 9.5pt;
+    font-size: 10pt;
 }
 
 .job-date {
     font-weight: 700;
-    font-size: 9.5pt;
+    font-size: 10pt;
     text-align: right;
     white-space: nowrap;
 }
 
 .job-item p {
     margin-bottom: 3px;
-    font-size: 9pt;
+    font-size: 9.5pt;
 }
 
 .job-item ul {
@@ -134,23 +132,23 @@ h2 {
 }
 
 .job-item li {
-    margin-bottom: 1px;
-    font-size: 9pt;
+    margin-bottom: 2px;
+    font-size: 9.5pt;
 }
 
 /* Skills Content */
 .skills-content p {
-    margin-bottom: 3px;
-    font-size: 9pt;
+    margin-bottom: 4px;
+    font-size: 9.5pt;
 }
 
 .cert-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 3px 15px;
+    gap: 4px 15px;
     list-style-type: disc;
     padding-left: 18px;
-    font-size: 9pt;
+    font-size: 9.5pt;
 }
 
 /* Floating Print Button */
@@ -191,7 +189,7 @@ h2 {
     }
 
     @page {
-        margin: 0.8cm;
+        margin: 1cm;
         size: A4;
     }
 

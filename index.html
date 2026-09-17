@@ -196,28 +196,45 @@
         <footer>
         </footer>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script>
-        function downloadPDF() {
-            const element = document.querySelector('.container');
+        async function downloadPDF() {
             const button = document.querySelector('.print-button');
             if (button) button.style.display = 'none';
 
-            document.body.classList.add('pdf-export');
+            const element = document.querySelector('.container');
 
-            const opt = {
-                margin: [0.15, 0.15, 0.15, 0.15],
-                filename: 'CV_Luis_Fernando_Rodriguez.pdf',
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2, useCORS: true, logging: false },
-                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
-                pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
-            };
+            try {
+                const canvas = await html2canvas(element, {
+                    scale: 2,
+                    useCORS: true,
+                    logging: false,
+                    backgroundColor: '#ffffff'
+                });
 
-            html2pdf().set(opt).from(element).save().then(() => {
-                document.body.classList.remove('pdf-export');
+                const imgData = canvas.toDataURL('image/jpeg', 0.98);
+                const { jsPDF } = window.jspdf;
+
+                const pdfWidth = 595.28; // Standard A4 width in pt
+                const margin = 12;
+                const printWidth = pdfWidth - (margin * 2);
+                const printHeight = (canvas.height * printWidth) / canvas.width;
+                const pdfHeight = printHeight + (margin * 2);
+
+                const pdf = new jsPDF({
+                    orientation: 'portrait',
+                    unit: 'pt',
+                    format: [pdfWidth, pdfHeight]
+                });
+
+                pdf.addImage(imgData, 'JPEG', margin, margin, printWidth, printHeight);
+                pdf.save('CV_Luis_Fernando_Rodriguez.pdf');
+            } catch (err) {
+                console.error('Error generating PDF:', err);
+            } finally {
                 if (button) button.style.display = 'flex';
-            });
+            }
         }
     </script>
 </body>
